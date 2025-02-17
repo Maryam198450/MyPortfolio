@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+    <div class="main">
+        <div class="navbar">
+            <img src="pic/logo.png" class="logo">
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">My Works</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        </div>
+        <div class="info">
+            <h3>Hi, I'm <span>Ariana</span>.</h3>
+            <h1><span>W</span>EB <span>D</span>ESINGER</h1>
+            <h3>Web desinger and developer from Califronia,USA. 
+            I craete <br> Website to do businesses do better <br> online.<h3>
+                <a href="#">Hire Me</a>
+        </div>
+        <div class="image">
+            <img src="pic/girl.webp" class="girl">
+        </div>
+        <div class="icons">
+        <a href="https://facebook.com/yourprofile" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="https://instagram.com/yourprofile" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="https://twitter.com/yourprofile" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+        </div>
+        </div>
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+        </body>
+</html>
+
+
+<!-- About Me Section -->
+<section id="about">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="pic/about.jpg" alt="Ariana's Photo">
+        </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hello! I'm Ariana, a passionate web designer and developer from California, USA. 
+               I specialize in creating modern, responsive, and user-friendly websites that help 
+               businesses grow and improve their online presence.</p>
+            <p>With expertise in HTML, CSS, JavaScript, and UI/UX design, I bring creativity and 
+               technical skills to every project I work on.</p>
+            <p>Let's build something amazing together!</p>
+            <a href="#">Download CV</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+        <div class="skill">
+            <div class="skill-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>HTML & CSS</h3>
+            <p>Proficient in building responsive and visually appealing websites.</p>
+        </div>
+        <div class="skill">
+            <div class="skill-icon">
+                <i class="fab fa-js"></i>
+            </div>
+            <h3>JavaScript</h3>
+            <p>Experience in developing interactive web applications.</p>
+        </div>
+        <div class="skill">
+            <div class="skill-icon">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Creating user-friendly interfaces with an eye for aesthetics.</p>
+        </div>
+    </div>
+</section>
+
+<!-- My Works Section -->
+<section id="my-works">
+    <h2>My Works</h2>
+    <div class="works-container">
+        <div class="work-item">
+            <img src="pic/work1.jpg" alt="Project 1">
+            <p>Portfolio Website</p>
+        </div>
+        <div class="work-item">
+            <img src="pic/work2.jpg" alt="Project 2">
+            <p>Business Landing Page</p>
+        </div>
+        <div class="work-item">
+            <img src="pic/work3.jpg" alt="Project 3">
+            <p>E-commerce Website</p>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="form-status"></div>
+    </div>
+</section>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var formData = new FormData(this);
+    var formStatus = document.getElementById('form-status');
+    
+    fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        formStatus.innerHTML = result;
+        if (result === 'Message sent successfully!') {
+            this.reset();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        formStatus.innerHTML = 'An error occurred. Please try again later.';
+    });
+});
+</script>
